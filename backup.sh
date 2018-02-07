@@ -11,7 +11,7 @@ do
   then
     echo "Creating backup for $database..."
     echo mysqldump $MYSQL_HOST_OPTS $MYSQLDUMP_OPTIONS $database
-    mysqldump $MYSQL_HOST_OPTS $MYSQLDUMP_OPTIONS $database > $database.sql 
+    mysqldump $MYSQL_HOST_OPTS $MYSQLDUMP_OPTIONS $database > /sql/$database.sql 
     curl -X POST "https://content.dropboxapi.com/2/files/upload" \
              -H "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
              -H 'Content-Type: application/octet-stream' \
