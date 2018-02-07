@@ -5,7 +5,7 @@ MAINTAINER Vis "skid@skidvis.com"
 ADD install.sh install.sh
 RUN sh install.sh && rm install.sh
 
-ENV MYSQLDUMP_OPTIONS --quote-names --quick --add-drop-table --add-locks --allow-keywords --disable-keys --extended-insert --single-transaction --create-options --comments --net_buffer_length=16384
+ENV MYSQLDUMP_OPTIONS --opt
 ENV MYSQL_HOST ""
 ENV MYSQL_PORT 3306
 ENV MYSQL_USER ""
