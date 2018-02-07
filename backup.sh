@@ -17,6 +17,6 @@ do
              -H "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
              -H 'Content-Type: application/octet-stream' \
              -H "Dropbox-API-Arg: {\"path\":\"/$DROPBOX_PREFIX$database.sql.gz\", \"mode\": \"overwrite\"}" \
-             -d @"/sql/$DROPBOX_PREFIX$database.sql.gz"
+             --data-binary @"/sql/$DROPBOX_PREFIX$database.sql.gz"
   fi
 done
