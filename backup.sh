@@ -12,10 +12,11 @@ do
     echo "Creating backup for $database..."
     echo mysqldump $MYSQL_HOST_OPTS $MYSQLDUMP_OPTIONS $database
     mysqldump $MYSQL_HOST_OPTS $MYSQLDUMP_OPTIONS $database > /sql/$database.sql 
+    gzip /sql/$database.sql
     curl -X POST "https://content.dropboxapi.com/2/files/upload" \
              -H "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
              -H 'Content-Type: application/octet-stream' \
-             -H "Dropbox-API-Arg: {\"path\":\"/$DROPBOX_PREFIX$database.sql\", \"mode\": \"overwrite\"}" \
-             -d @"/sql/$DROPBOX_PREFIX$database.sql"
+             -H "Dropbox-API-Arg: {\"path\":\"/$DROPBOX_PREFIX$database.sql.gz\", \"mode\": \"overwrite\"}" \
+             -d @"/sql/$DROPBOX_PREFIX$database.sql.gz"
   fi
 done
